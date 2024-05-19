@@ -3,10 +3,10 @@ import numpy as np
 
 def egcd(a, b):
     if a == 0:
-        return (b, 0, 1)
+        return b, 0, 1
     else:
         g, y, x = egcd(b % a, a)
-        return (g, x - (b // a) * y, y)
+        return g, x - (b // a) * y, y
 
 
 def modinv(a, m):
@@ -26,7 +26,7 @@ def matrix_mod_inv(matrix, modulus):
 
 def prepare_text(text, block_size):
     text = text.replace(" ", "").upper()
-    padding = block_size - len(text) % block_size
+    block_size - len(text) % block_size
     return text
 
 
@@ -65,9 +65,6 @@ def decrypt(ciphertext, key):
     return numbers_to_text(plaintext_numbers)
 
 
-import numpy as np
-
-
 def get_key_from_user():
     print("Enter the 2x2 key matrix (each row on a new line, with integers separated by spaces):")
     key = []
@@ -85,13 +82,10 @@ def get_key_from_user():
     return key
 
 
-if __name__ == '__main__':
-    plaintext = "Arabinda Sigdel"
-    # key = [[3, 5], [1, 2]]
-    key = get_key_from_user()
-    print("Key:", key)
-    print(matrix_mod_inv(key, 25))
-    ciphertext = encrypt(plaintext, key)
-    print("Encrypted:", ciphertext)
-    # decrypted_text = decrypt(ciphertext, key)
-    # print("Decrypted:", decrypted_text)
+plaintext = "Arabinda Sigdel"
+# key = [[3, 5], [1, 2]]
+key = get_key_from_user()
+ciphertext = encrypt(plaintext, key)
+print("Encrypted:", ciphertext)
+decrypted_text = decrypt(ciphertext, key)
+print("Decrypted:", decrypted_text)
