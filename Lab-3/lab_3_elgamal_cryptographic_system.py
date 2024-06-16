@@ -1,4 +1,3 @@
-# WAP to implement ELgamal Cryptograpic System
 import random
 from sympy import randprime
 
